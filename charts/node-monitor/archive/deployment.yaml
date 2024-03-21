@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-monitor
+spec:
+  selector:
+    matchLabels:
+      app: node-monitor
+  template:
+    metadata:
+      labels:
+        app: node-monitor
+    spec:
+      serviceAccountName: node-monitor-serviceaccount
+      nodeSelector:
+        kubernetes.io/os: windows
+        kubernetes.io/hostname: aksinvsv200003u
+      tolerations:
+      - key: kubernetes.azure.com/scalesetpriority
+        operator: Exists
+        effect: NoSchedule
+      containers:
+      - name: node-monitor
+        image: crrcmdefault.azurecr.io/rokos/node-monitor:latest
+        imagePullPolicy: Always
+        env:
+        - name: K8S_NODE_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-monitor-priv
+spec:
+  selector:
+    matchLabels:
+      app: node-monitor-priv
+  template:
+    metadata:
+      labels:
+        app: node-monitor-priv
+    spec:
+      serviceAccountName: node-monitor-serviceaccount
+      nodeSelector:
+        kubernetes.io/os: windows
+        kubernetes.io/hostname: aksinvsv200003u
+      hostNetwork: true
+      securityContext:
+        windowsOptions:
+          hostProcess: true
+          runAsUserName: "NT AUTHORITY\\System"
+      tolerations:
+      - key: kubernetes.azure.com/scalesetpriority
+        operator: Exists
+        effect: NoSchedule
+      containers:
+      - name: node-monitor
+        image: crrcmdefault.azurecr.io/rokos/node-monitor:latest
+        imagePullPolicy: Always
+        args:
+        - "--privileged"
+        env:
+        - name: KUBERNETES_SERVICE_HOST
+          value: tnd-investment-2cd352ba.privatelink.uksouth.azmk8s.io
+        - name: KUBERNETES_SERVICE_PORT
+          value: "443"
+        - name: KUBERNETES_SERVICE_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: node-monitor-serviceaccount-secret
+              key: token

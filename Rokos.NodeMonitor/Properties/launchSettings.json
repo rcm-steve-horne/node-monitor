@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "Rokos.NodeMonitor": {
+      "commandName": "Project",
+      "commandLineArgs": "-p"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

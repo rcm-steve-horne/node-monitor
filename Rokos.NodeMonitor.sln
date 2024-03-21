@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rokos.NodeMonitor", "Rokos.NodeMonitor\Rokos.NodeMonitor.csproj", "{EAF32C00-7ECD-446E-B8D2-951D00D7A148}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAF32C00-7ECD-446E-B8D2-951D00D7A148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAF32C00-7ECD-446E-B8D2-951D00D7A148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAF32C00-7ECD-446E-B8D2-951D00D7A148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAF32C00-7ECD-446E-B8D2-951D00D7A148}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {89996BE0-DAA9-43E0-B242-317F1B84E494}
+	EndGlobalSection
+EndGlobal
