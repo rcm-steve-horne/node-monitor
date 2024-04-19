@@ -14,7 +14,6 @@ spec:
       serviceAccountName: node-monitor-serviceaccount
       nodeSelector:
         kubernetes.io/os: windows
-        #kubernetes.io/hostname: aksinvsv200003u
       tolerations:
       - key: kubernetes.azure.com/scalesetpriority
         operator: Exists
@@ -45,7 +44,6 @@ spec:
       serviceAccountName: node-monitor-serviceaccount
       nodeSelector:
         kubernetes.io/os: windows
-        #kubernetes.io/hostname: aksinvsv200003u
       hostNetwork: true
       securityContext:
         windowsOptions:
