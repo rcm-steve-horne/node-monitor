@@ -8,7 +8,7 @@ helm install node-monitor charts/node-monitor
 
 ## Architecture
 
-The node monitor consists of a non-priveleged and privileged daemonset running on Windows nodes. These two containers communicate with one another to identify and report issues with the node.
+The node monitor consists of a non-privileged and privileged daemonset running on Windows nodes. These two containers communicate with one another to identify and report issues with the node.
 
 * Privileged pod is responsible for detecting crash dumps, watching the node event log, and notifying the non-privileged pod of failures.
 * Non-privileged pod is responsible for detecting internal container DNS resolution failures, and reporting all failures from both pods via email.
